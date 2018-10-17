@@ -10,6 +10,7 @@
 <!DOCTYPE html>
 <html>
     <head>
+        
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Mostrar Lista De Datos</title>
         <style>
@@ -46,7 +47,6 @@
                 String sql = "select * from alumnos; ";
 
                 resultado = Comando.executeQuery(sql);
-                int count=0;
                 while (resultado.next()) {
              
         %>
@@ -66,7 +66,7 @@
             </TR>
         </TABLE>
         <%
-            count++;
+            
              }
             } catch (SQLException ex) {
                 PrintWriter salid = response.getWriter();
