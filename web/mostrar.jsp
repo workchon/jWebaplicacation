@@ -33,28 +33,7 @@
     <body>
         <a href="Principal.jsp">Volver al Inico</a>
         <%
-            int cantidad = 0;
-            try {
 
-                Class.forName("com.mysql.jdbc.Driver");
-                Connection Conexion = null;
-                Statement Comando = null;
-                ResultSet resultado = null;
-                Conexion = DriverManager.getConnection("jdbc:mysql://localhost:3306/itson", "Jesus", "Perico123");
-
-                Comando = Conexion.createStatement();
-                String sql = "select count(*) as cantidad from alumnos; ";
-
-                resultado = Comando.executeQuery(sql);
-
-                while (resultado.next()) {
-                    cantidad = Integer.parseInt(resultado.getString("cantidad"));
-                }
-            } catch (SQLException ex) {
-                PrintWriter salid = response.getWriter();
-                salid.println(ex.getMessage());
-            }
-            String[][] Datos = new String[cantidad][4];
              try {
 
                 Class.forName("com.mysql.jdbc.Driver");
@@ -69,12 +48,7 @@
                 resultado = Comando.executeQuery(sql);
                 int count=0;
                 while (resultado.next()) {
-                    Datos[count][0]=resultado.getString("idAlumnos");
-                    Datos[count][1]=resultado.getString("NombreAlumno");
-                    Datos[count][2]=resultado.getString("Carrera");
-                    Datos[count][3]=resultado.getString("idUsuario");
-                    
-               
+             
         %>
         
         <TABLE>
@@ -85,10 +59,10 @@
                 <TH>Usuario Que los Agrego</TH>
             </TR>
             <TR>
-                <TD> <%=Datos[count][0]%> </TD>
-                <TD> <%=Datos[count][1]%> </TD>
-                <TD> <%=Datos[count][2]%> </TD>
-                <TD> <%=Datos[count][3]%> </TD>
+                <TD> <%=resultado.getString("idAlumnos")%> </TD>
+                <TD> <%=resultado.getString("NombreAlumno")%> </TD>
+                <TD> <%=resultado.getString("Carrera")%> </TD>
+                <TD> <%=resultado.getString("idUsuario")%> </TD>
             </TR>
         </TABLE>
         <%
