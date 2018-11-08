@@ -52,9 +52,11 @@
             if(Origen.equals("Modificar"))
             {
                 try{
+                Class.forName("com.mysql.jdbc.Driver");
+                Conexion=DriverManager.getConnection("jdbc:mysql://localhost:3306/itson", "Jesus", "Perico123");
                 Comando=Conexion.createStatement();
                 String sql="UPDATE itson.alumnos SET NombreAlumno='"+Nombre+"',Carrera='"+Carrera+"',idUsuario='"+strUsuario+"' where idAlumnos ='"+ID+"'";
-                Comando.executeQuery(sql);
+                Comando.executeUpdate(sql);
                 }
                 catch(SQLException ex)
                 {
@@ -72,9 +74,11 @@
              {
                 try
                 {
+                Class.forName("com.mysql.jdbc.Driver");
+                Conexion=DriverManager.getConnection("jdbc:mysql://localhost:3306/itson", "Jesus", "Perico123");
                 Comando=Conexion.createStatement();
                 String sql="DELETE FROM itson.alumnos where idAlumnos='"+ID+"'";
-                Comando.executeQuery(sql);
+                Comando.executeUpdate(sql);
                 }
                 catch(SQLException ex)
                 {
@@ -85,8 +89,8 @@
              }
         %>
         <div style="padding: 20px;width: 200px;height: 150px; ">
-            <a href="Principal.jsp">Volver al Principal</a> <br><br>
-            <a href="mostrar.jsp">Mostrar Tabla</a>
+            <a href="Principal.jsp" class="btn btn-info">Volver al Principal</a> <br><br>
+            <a href="mostrar.jsp" class="btn btn-info">Mostrar Tabla</a>
         </div>
        
     </body>
